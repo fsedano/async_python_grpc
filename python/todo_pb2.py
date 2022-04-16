@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntodo.proto\x12\x0btodoPackage\"\x06\n\x04Void\"\x18\n\x08TodoText\x12\x0c\n\x04text\x18\x01 \x01(\t\"$\n\x08TodoItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\tTodoItems\x12$\n\x05items\x18\x01 \x03(\x0b\x32\x15.todoPackage.TodoItem2z\n\x04Todo\x12:\n\nCreateTodo\x12\x15.todoPackage.TodoText\x1a\x15.todoPackage.TodoItem\x12\x36\n\treadTodos\x12\x11.todoPackage.Void\x1a\x16.todoPackage.TodoItemsb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntodo.proto\x12\x0btodoPackage\"\x06\n\x04Void\"\x18\n\x08TodoText\x12\x0c\n\x04text\x18\x01 \x01(\t\"$\n\x08TodoItem\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\tTodoItems\x12$\n\x05items\x18\x01 \x03(\x0b\x32\x15.todoPackage.TodoItem\"\x17\n\x07LogData\x12\x0c\n\x04text\x18\x01 \x01(\t2\xb3\x01\n\x04Todo\x12:\n\nCreateTodo\x12\x15.todoPackage.TodoText\x1a\x15.todoPackage.TodoItem\x12\x36\n\treadTodos\x12\x11.todoPackage.Void\x1a\x16.todoPackage.TodoItems\x12\x37\n\ngetLogData\x12\x11.todoPackage.Void\x1a\x14.todoPackage.LogData0\x01\x62\x06proto3')
 
 
 
@@ -22,6 +22,7 @@ _VOID = DESCRIPTOR.message_types_by_name['Void']
 _TODOTEXT = DESCRIPTOR.message_types_by_name['TodoText']
 _TODOITEM = DESCRIPTOR.message_types_by_name['TodoItem']
 _TODOITEMS = DESCRIPTOR.message_types_by_name['TodoItems']
+_LOGDATA = DESCRIPTOR.message_types_by_name['LogData']
 Void = _reflection.GeneratedProtocolMessageType('Void', (_message.Message,), {
   'DESCRIPTOR' : _VOID,
   '__module__' : 'todo_pb2'
@@ -50,6 +51,13 @@ TodoItems = _reflection.GeneratedProtocolMessageType('TodoItems', (_message.Mess
   })
 _sym_db.RegisterMessage(TodoItems)
 
+LogData = _reflection.GeneratedProtocolMessageType('LogData', (_message.Message,), {
+  'DESCRIPTOR' : _LOGDATA,
+  '__module__' : 'todo_pb2'
+  # @@protoc_insertion_point(class_scope:todoPackage.LogData)
+  })
+_sym_db.RegisterMessage(LogData)
+
 _TODO = DESCRIPTOR.services_by_name['Todo']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -62,6 +70,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TODOITEM._serialized_end=97
   _TODOITEMS._serialized_start=99
   _TODOITEMS._serialized_end=148
-  _TODO._serialized_start=150
-  _TODO._serialized_end=272
+  _LOGDATA._serialized_start=150
+  _LOGDATA._serialized_end=173
+  _TODO._serialized_start=176
+  _TODO._serialized_end=355
 # @@protoc_insertion_point(module_scope)

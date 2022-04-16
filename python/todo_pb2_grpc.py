@@ -24,6 +24,11 @@ class TodoStub(object):
                 request_serializer=todo__pb2.Void.SerializeToString,
                 response_deserializer=todo__pb2.TodoItems.FromString,
                 )
+        self.getLogData = channel.unary_stream(
+                '/todoPackage.Todo/getLogData',
+                request_serializer=todo__pb2.Void.SerializeToString,
+                response_deserializer=todo__pb2.LogData.FromString,
+                )
 
 
 class TodoServicer(object):
@@ -41,6 +46,12 @@ class TodoServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def getLogData(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TodoServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -53,6 +64,11 @@ def add_TodoServicer_to_server(servicer, server):
                     servicer.readTodos,
                     request_deserializer=todo__pb2.Void.FromString,
                     response_serializer=todo__pb2.TodoItems.SerializeToString,
+            ),
+            'getLogData': grpc.unary_stream_rpc_method_handler(
+                    servicer.getLogData,
+                    request_deserializer=todo__pb2.Void.FromString,
+                    response_serializer=todo__pb2.LogData.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -95,5 +111,22 @@ class Todo(object):
         return grpc.experimental.unary_unary(request, target, '/todoPackage.Todo/readTodos',
             todo__pb2.Void.SerializeToString,
             todo__pb2.TodoItems.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getLogData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/todoPackage.Todo/getLogData',
+            todo__pb2.Void.SerializeToString,
+            todo__pb2.LogData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -20,8 +20,17 @@ async function createTodo(call, callback) {
   callback(null, {text: "TO-DO created"});
 }
 
+async function getLogData(call) {
+    console.log(`Getting log data`);
+    for (i=0; i<1000; i++) {
+        await sleep(500);
+        call.write({text: "Log data"});
+    }
+}
+
 server.addService(todo.Todo.service, {
-    createTodo: createTodo
+    createTodo: createTodo,
+    getLogData: getLogData
 });
 
 server.bindAsync("0.0.0.0:1234", grpc.ServerCredentials.createInsecure(), function() {

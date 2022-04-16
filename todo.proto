@@ -5,6 +5,7 @@ package todoPackage;
 service Todo {
     rpc CreateTodo(TodoText) returns (TodoItem);
     rpc readTodos(Void) returns (TodoItems);
+    rpc getLogData(Void) returns (stream LogData);
 }
 
 message Void {}
@@ -19,4 +20,8 @@ message TodoItem {
 
 message TodoItems {
     repeated TodoItem items = 1;
+}
+
+message LogData {
+    string text = 1;
 }
